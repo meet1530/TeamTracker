@@ -35,10 +35,4 @@ def logout():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    if not os.path.exists(DATABASE):
-        with sqlite3.connect(DATABASE) as db:
-            db.execute("CREATE TABLE IF NOT EXISTS members (id INTEGER PRIMARY KEY, name TEXT, role TEXT, department TEXT, joined TEXT)")
-            db.execute("CREATE TABLE IF NOT EXISTS events (id INTEGER PRIMARY KEY, name TEXT, date TEXT)")
-            db.execute("CREATE TABLE IF NOT EXISTS attendance (id INTEGER PRIMARY KEY, member_id INTEGER, event_id INTEGER, status TEXT)")
-            db.execute("CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY, title TEXT, description TEXT, team TEXT, member TEXT, date TEXT)")
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=5000)
